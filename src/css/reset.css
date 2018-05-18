@@ -1,0 +1,204 @@
+/* @group Reset */
+html,
+div,
+body,
+span,
+applet,
+object,
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+font,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  line-height: 100%;
+  vertical-align: baseline;
+  background: transparent;
+}
+ol,
+ul,
+li {
+  list-style: none;
+}
+/* remember to define focus styles! */
+:focus {
+  outline: 0;
+}
+/* remember to highlight inserts somehow! */
+ins {
+  text-decoration: none;
+}
+del {
+  text-decoration: line-through;
+}
+/* tables still need 'cellspacing="0"' in the markup */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+.none {
+  display: none;
+}
+a {
+  text-decoration: none;
+  line-height: 1.5em;
+}
+a:hover {
+  opacity: .8;
+}
+/* @end */
+/******************** font-set begin ********************/
+body,
+input,
+select,
+textarea {
+  font-family: "microsoft yahei", "Hiragino Sans GB", Arial, Helvetica, pxsans-serif;
+  color: #666;
+  font-size: 14px;
+}
+.simsun {
+  font-family: simsun;
+}
+.tahoma {
+  font-family: Tahoma, Geneva, sans-serif;
+}
+.georgia {
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+.arial {
+  font-family: arial;
+}
+/******************** clear floating begin *********************/
+.clearfix:after {
+  clear: both;
+  content: "020";
+  display: block;
+  height: 0;
+  visibility: hidden;
+  line-height: 0;
+  font-size: 1px;
+}
+.clearfix {
+  zoom: 1;
+}
+.left {
+  float: left;
+}
+.right {
+  float: right;
+}
+.inline-block {
+  display: inline-block;
+}
+.text-center {
+  text-align: center;
+}
+.text-left {
+  text-align: left;
+}
+.text-right {
+  text-align: right;
+}
+.relative {
+  position: relative;
+}
+.absolute {
+  position: absolute;
+}
+.fixed {
+  position: fixed;
+}
+.none {
+  display: none;
+}
+.clearBoth {
+  clear: both;
+}
+.text-overflow {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: block;
+}
+/******************** others begin ********************/
+.font-bold {
+  font-weight: bold;
+}
+.color-blue,
+.color-blue:hover {
+  color: #20a0ff;
+}
+.color-red,
+a.color-red:hover {
+  color: #FF0000;
+}
+.color-lime,
+a.color-lime:hover {
+  color: #00FF00;
+}
+.color-green,
+a.color-green:hover {
+  color: #13ce66;
+}
+.color-orange,
+a.color-orange:hover {
+  color: #FFA500;
+}
+.black {
+  color: #000;
+}

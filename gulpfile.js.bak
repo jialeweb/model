@@ -1,0 +1,86 @@
+/**
+ * Created by Administrator on 2017/6/1 0001.
+ */
+var gulp = require('gulp'),
+    less = require('gulp-less'),
+    browserSync = require('browser-sync'),
+    uglify = require('gulp-uglify'),
+    gulpIf = require('gulp-if'),
+    minifyCSS = require('gulp-minify-css'),
+    imagemin = require('gulp-imagemin'),
+    htmlmin = require('gulp-htmlmin'),
+    cache = require('gulp-cache'),
+    ignore = require('gulp-ignore'),
+    ejs = require('gulp-ejs'),
+    gutil = require('gulp-util');
+
+
+// less
+gulp.task('less', function () {
+    return gulp.src('model/less/**/*.less')
+        .pipe(less())
+        .pipe(gulp.dest('model/css'))
+        .pipe(browserSync.reload({
+            stream: true
+        }))
+});
+gulp.task('browserSync', function () {
+    browserSync({
+        server: {
+            baseDir: 'model'
+        },
+    })
+});
+gulp.task('images', function () {
+    return gulp.src(['model/images/**/*.+(png|jpg|gif|svg)','!model/fonts/*'])
+        .pipe(cache(imagemin({
+            interlaced: true
+        })))
+        .pipe(gulp.dest('src/images'))
+});
+gulp.task('minifyJs', function () {
+    return gulp.src(['model/**/*.js','!model/fonts/*'])
+        // .pipe(uglify())
+        .pipe(gulp.dest('src'))
+})
+gulp.task('minifyCss', function () {
+    return gulp.src(['model/**/*.css','!model/fonts/*'])
+        // .pipe(minifyCSS())
+        .pipe(gulp.dest('src'));
+});
+gulp.task('testHtmlmin', function () {
+    var options = {
+        // removeComments: true,//清除HTML注释
+        // collapseWhitespace: false,//压缩HTML
+        // collapseBooleanAttributes: true,//省略布尔属性的值 <input checked="true"/> ==> <input />
+        // removeEmptyAttributes: true,//删除所有空格作属性值 <input id="" /> ==> <input />
+        // removeScriptTypeAttributes: true,//删除<script>的type="text/javascript"
+        // removeStyleLinkTypeAttributes: true,//删除<style>和<link>的type="text/css"
+        // minifyJS: true,//压缩页面JS
+        // minifyCSS: true//压缩页面CSS
+    };
+    gulp.src('model/*.html')
+        .pipe(ejs().on(
+            'error', gutil.log
+        ))
+        .pipe(htmlmin(options))
+        .pipe(gulp.dest('src'));
+});
+
+// 拷贝字体图标文件
+gulp.task('copyfonts', function () {
+    return gulp.src('./model/fonts/*')
+        .pipe(gulp.dest('src/fonts'))
+});
+gulp.task('copyjson', function(){
+    return gulp.src('./model/js/*.json')
+        .pipe(gulp.dest('src/js'))
+});
+
+gulp.task('watch', ['browserSync', 'less', 'minifyCss', 'images', 'minifyJs', 'testHtmlmin','copyfonts','copyjson'], function () {
+    gulp.watch('model/less/**/*.less', ['less'])
+    gulp.watch('model/*.html', browserSync.reload)
+    gulp.watch('model/**/*.js', browserSync.reload)
+
+})
+gulp.task('default', ['watch']);

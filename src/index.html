@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="description" content="description">
+		
+	    <meta name="keywords" content="keywords">
+	    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1,minimum-scale=1">
+	    <meta name="renderer" content="webkit">
+	    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	    <meta name="format-detection" content="telephone=no,email=no">
+	    <meta http-equiv="Cache-Control" content="no-siteapp">
+	    <link rel="stylesheet" type="text/css" href="js/swiper-4.1.0.min.css">
+		<title></title>
+	</head>
+	<style>
+		
+		.swiper-container{
+			height: 50px;
+		}
+		#swiper-container1,#swiper-container2{
+			 height: 500px;
+			 width: 200px;
+		}
+	</style>
+	<body>
+		
+		<div id="swiper-container" class="swiper-container">
+			  <div class="swiper-wrapper">
+			    <div class="swiper-slide" style="background: red; width: 200px;">slider1</div>
+			    <div class="swiper-slide" style="background: #007AFF;width: 100px">slider2</div>
+			    <div class="swiper-slide" style="background: #095F8A; width: 250px">slider3</div>
+			  </div>
+			  <div class="swiper-pagination"></div>
+		</div>
+		
+		<!--<div id="swiper-container1" class="swiper-container">
+			  <div class="swiper-wrapper">
+			    <div class="swiper-slide" style="background: red; width: 300px;">slider1</div>
+			    <div class="swiper-slide" style="background: #007AFF;width: 300px">slider2</div>
+			    <div class="swiper-slide" style="background: #095F8A; width: 300px">slider3</div>
+			  </div>
+		</div>-->
+		<div style="display: flex;">
+			<div id="swiper-container1" class="swiper-container">
+				  <div class="swiper-wrapper">
+				    <div class="swiper-slide" style="background: red; width: 300px;height: 40px;">slider1</div>
+				    <div class="swiper-slide" style="background: #007AFF;width: 300px;height: 50px;">slider2</div>
+				    <div class="swiper-slide" style="background: #095F8A; width: 300px;height: 60px;">slider3</div>
+				     
+				    <div class="swiper-slide" style="background: red; width: 300px;height: 40px;">slider4</div>
+				    <div class="swiper-slide" style="background: #007AFF;width: 300px;height: 50px;">slider5</div>
+				    <div class="swiper-slide" style="background: #095F8A; width: 300px;height: 60px;">slider6</div> 				  
+				    <div class="swiper-slide" style="background: red; width: 300px;height: 40px;">slider7</div>
+				    <div class="swiper-slide" style="background: #007AFF;width: 300px;height: 50px;">slider8</div>
+				    <div class="swiper-slide" style="background: #095F8A; width: 300px;height: 60px;">slider9</div>
+				  </div>
+				  <div class="swiper-pagination"></div>
+			</div>
+			<div id="swiper-container2" class="swiper-container">
+				  <div class="swiper-wrapper">
+				    <div class="swiper-slide" style="background: red; height: 100px;">slider1</div>
+				    <div class="swiper-slide" style="background: #007AFF;height: 100px">slider2</div>
+				    <div class="swiper-slide" style="background: #007AFF;height: 300px">slider3</div>
+				    <div class="swiper-slide" style="background: #13CE66;height: 400px">slider4</div>
+				    <div class="swiper-slide" style="background: #10A0EA;height: 500px">slider5</div>
+				    <div class="swiper-slide" style="background: #000000;height: 600px">slider6</div>
+				    <div class="swiper-slide" style="background: #429842;height: 700px">slider7</div>
+				    <div class="swiper-slide" style="background: #007AFF;height: 800px">slider8</div>
+				    <div class="swiper-slide" style="background: #007AFF;height: 800px">slider9</div>
+				   
+				  <div class="swiper-pagination"></div>
+			</div>
+		</div>
+	</div></body>
+	
+</html>
+
+<script type="text/javascript" src="js/swiper-4.1.0.min.js"></script>
+<script>
+			/*var mySwiper = new Swiper('#swiper-container', {
+				
+					autoplay: {
+						    delay: 3000,
+						    stopOnLastSlide: false,
+						    disableOnInteraction: true,
+					},
+					
+					pagination: {
+						    el: '.swiper-pagination',
+						    //指定的分液器的样式
+						     renderBullet: function (index, className) {
+						          return '<span class="' + className + '" style="background:#fff;box-show:0 0 4px #ccc"></span>';
+						        },
+					},
+					
+				})
+				var mySwiper = new Swiper('#swiper-container', {
+					slidesPerView :'auto',
+																		
+					})
+				* */
+			
+			var swiper1= new Swiper('.swiper-container1', {
+				direction : 'vertical',
+					
+					autoHeight: true, 
+					onSlideChangeStart : function() { 
+						$('.swiper-wrapper').height('auto'); 
+					} 
+		}); 
+			
+	var mySwiper1 = new Swiper('#swiper-container1',{
+		  	direction : 'vertical',
+		    slidesPerView:'auto',
+		    mode:'vertical',
+		    watchActiveIndex: true,
+  })
+  /*var holdPosition = 0;*/
+  var mySwiper2 = new Swiper('#swiper-container2',{
+  	direction : 'vertical',
+    slidesPerView:'auto',
+    mode:'vertical',
+    watchActiveIndex: true,
+    controller: {
+    	control:mySwiper1, //控制Swiper1
+  		},
+  	})
+  	mySwiper1.controller.control = mySwiper2;//Swiper1控制Swiper2，需要在Swiper2初始化后
+	mySwiper2.controller.control = mySwiper1;
+  	
+  	
+  	
+   /* onTouchStart: function() {
+      holdPosition = 0;
+    },
+    onResistanceBefore: function(s, pos){
+      holdPosition = pos;
+    },*/
+   /* onTouchEnd: function(){
+      if (holdPosition>100) {
+        // Hold Swiper in required position
+        mySwiper.setWrapperTranslate(0,100,0)
+
+        //Dissalow futher interactions
+        mySwiper.params.onlyExternal=true
+
+        //Show loader
+        $('.preloader').addClass('visible');
+
+        //Load slides
+        loadNewSlides();
+      }
+    }*/
+  
+ /* var slideNumber = 0;
+  		function loadNewSlides() {
+    /* 
+    Probably you should do some Ajax Request here
+    But we will just use setTimeout
+    */
+					/*    setTimeout(function(){
+					      //Prepend new slide
+					      var colors = ['red','blue','green','orange','pink'];
+					      var color = colors[Math.floor(Math.random()*colors.length)];
+					      mySwiper.prependSlide('<div class="title">New slide '+slideNumber+'</div>', 'swiper-slide '+color+'-slide')
+					
+					      //Release interactions and set wrapper
+					      mySwiper.setWrapperTranslate(0,0,0)
+					      mySwiper.params.onlyExternal=false;
+					
+					      //Update active slide
+					      mySwiper.updateActiveSlide(0)
+					
+					      //Hide loader
+					      $('.preloader').removeClass('visible')
+					    },1000)
+					
+					    slideNumber++;
+	}*/
+					  
+																		
+		
+</script>
+<!--<script type="text/javascript" src="js/sea.js" ></script>
+<script src="js/main.js"></script>-->
+	
